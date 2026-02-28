@@ -57,6 +57,7 @@ vim.keymap.set('v', '<Tab>', '>gv', opts)
 
 --- Keymaps with leader key
 vim.keymap.set('n', '<leader>tw', '<cmd>set wrap!<CR>',vim.tbl_extend('force', opts, {desc = '[T]oggle [W]rap'})) -- Toggle line wrapping
+vim.keymap.set('n', '<leader>q', '<cmd>q!<CR>', opts)
 
 local diagnostics_active = true -- Toggle diagnostics
 
@@ -79,5 +80,5 @@ vim.keymap.set('n', ']d', function()
 end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 

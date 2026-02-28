@@ -126,6 +126,7 @@ return {
         },
       },
       lua_ls = {},
+      jsonls = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -139,6 +140,7 @@ return {
     vim.list_extend(ensure_installed, {
       'lua-language-server', -- Lua Language server
       'stylua', -- Used to format Lua code
+      'json-lsp',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }

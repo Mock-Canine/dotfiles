@@ -1,5 +1,3 @@
-add-auto-load-safe-path /home/zhangyong/mit61810/xv6-labs-2025/.gdbinit
-add-auto-load-safe-path /home/zhangyong/mit61810/xv6-labs-2024/.gdbinit
 python
 
 # GDB dashboard - Modular visual interface for GDB in Python.
@@ -2394,3 +2392,5 @@ python import sys; sys.modules['readline'] = None
 # Local Variables:
 # mode: python
 # End:
+
+# Self config

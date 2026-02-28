@@ -1,3 +1,11 @@
+# Only run in interactive shells(do not dettach the auto-created main session and create
+# a new one, this will create a zombie session)
+[[ $- != *i* ]] && return
+# Don't start tmux inside tmux
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
+  tmux attach -t main || tmux new -s main
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -9,7 +17,9 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 ## Make zsh vim-like
 bindkey -v
-KEYTIMEOUT=1
+# Used for autosuggestion
+bindkey '^f' vi-forward-blank-word
+EYTIMEOUT=1
 # Prompt the insert and normal mode
 function zle-keymap-select {
   if [[ $KEYMAP == vicmd ]]; then
@@ -49,3 +59,11 @@ eval "$(zoxide init --cmd j zsh)"
 
 # Zsh plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+fpath+=(~/.zfunc)
+autoload -Uz compinit && compinit
+
+# Use nvim to open man pages
+export MANPAGER='nvim +Man!'
+export NEMU_HOME=/home/zhangyong/ysyx/ysyx-workbench/nemu
+export AM_HOME=/home/zhangyong/ysyx/ysyx-workbench/abstract-machine

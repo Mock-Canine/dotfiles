@@ -39,13 +39,14 @@ vim.opt.diffopt:append('indent-heuristic')
 vim.opt.colorcolumn = '80' -- show a column at 80 characters as a guide for long lines
 vim.opt.list = true
 vim.opt.listchars = 'nbsp:¬,extends:»,precedes:«,trail:•' -- show more hidden characters
+vim.g.c_syntax_for_h = 1
 
 -- Editing options
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 vim.o.cursorline = false -- highlight the current line
-vim.o.shiftwidth = 2 -- the number of spaces inserted for each indentation
-vim.o.tabstop = 2 -- insert n spaces for a tab
-vim.o.softtabstop = 2 -- Number of spaces that a tab counts for while performing editing operations
+vim.o.shiftwidth = 4 -- the number of spaces inserted for each indentation
+vim.o.tabstop = 4 -- insert n spaces for a tab
+vim.o.softtabstop = 4 -- Number of spaces that a tab counts for while performing editing operations
 vim.o.expandtab = true -- convert tabs to spaces
 vim.o.smartindent = true -- make indenting smarter again
 vim.o.autoindent = true -- copy indent from current line when starting new one
