@@ -23,9 +23,8 @@ vim.keymap.set('n', '*', '*zzzv')
 vim.keymap.set('n', '#', '#zzzv')
 vim.keymap.set('n', 'g*', 'g*zzzv')
 
-vim.keymap.set('n', '?', '?\\v') -- "very magic" (less escaping needed) regexes by default
-vim.keymap.set('n', '/', '/\\v')
-vim.keymap.set('c', '%s/', '%sm/')
+vim.keymap.set({ 'n', 'x' }, '/', '/\\v')
+vim.keymap.set({ 'n', 'x' }, '?', '?\\v')
 
 vim.keymap.set('v', 'p', '"_dP', opts) -- Keep last yanked when pasting
 
@@ -58,6 +57,15 @@ vim.keymap.set('v', '<Tab>', '>gv', opts)
 --- Keymaps with leader key
 vim.keymap.set('n', '<leader>tw', '<cmd>set wrap!<CR>',vim.tbl_extend('force', opts, {desc = '[T]oggle [W]rap'})) -- Toggle line wrapping
 vim.keymap.set('n', '<leader>q', '<cmd>q!<CR>', opts)
+
+vim.keymap.set('n', '<leader>r', [[:%s/\v]], {
+  noremap = true,
+  desc = "[R]eplace (very magic) whole file"
+})
+vim.keymap.set({ 'v', 'x' }, '<leader>r', [[:s/\v]], {
+  noremap = true,
+  desc = "[R]eplace (very magic) in selection"
+})
 
 local diagnostics_active = true -- Toggle diagnostics
 

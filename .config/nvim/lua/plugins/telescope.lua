@@ -48,6 +48,9 @@ return {
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sF', function()
+        require('telescope.builtin').find_files({ hidden = true, no_ignore = true })
+      end, { desc = "[S]earch [F]iles (all – no ignore)" })
       vim.keymap.set({ 'n', 'v' }, '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -55,7 +58,9 @@ return {
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommands history' })
       vim.keymap.set('n', '<leader>ss', builtin.search_history, { desc = '[S]earch [S]earch history' })
-      vim.keymap.set('n', '<leader>sm', builtin.man_pages, { desc = '[S]earch [M]an pages' })
+      vim.keymap.set('n', '<leader>sm', function() -- Not only focus on the man 1, i need man 3 for c
+        require('telescope.builtin').man_pages({ sections = { "1", "3"}})
+      end, { desc = "[S]earch [M]an pages" })
       vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = '[S]earch [T]reesitter' })
       vim.keymap.set('n', '<leader><leader>', builtin.builtin, { desc = '[] List builtin pickers' })
 

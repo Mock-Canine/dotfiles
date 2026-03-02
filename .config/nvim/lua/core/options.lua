@@ -55,13 +55,3 @@ vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better compl
 vim.o.pumheight = 10 -- pop up menu height
 vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
-
--- Auto commands
---[[Auto-format c files on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.c",
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-})
-]]

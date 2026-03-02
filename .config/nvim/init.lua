@@ -1,6 +1,7 @@
 -- Core vim general options and keymaps
 require 'core.options'
 require 'core.keymaps'
+require 'core.autocmd'
 
 -- Bootstrap lazy.nvim pasted from https://lazy.folke.io/
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -25,4 +26,5 @@ require("lazy").setup({
     { import = "plugins" },
   },
   checker = { enabled = false },
+  change_detection = { notify = false }
 })

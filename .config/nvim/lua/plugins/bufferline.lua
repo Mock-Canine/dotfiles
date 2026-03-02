@@ -19,6 +19,11 @@ return {
 
       persist_buffer_sort = true,
       sort_by = "insert_at_end",
+      custom_filter = function(buf_number, buf_numbers)
+        if vim.bo[buf_number].filetype ~= "man" then
+          return true
+        end
+      end,
     },
   },
 }
