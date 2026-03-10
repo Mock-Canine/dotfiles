@@ -1,11 +1,11 @@
 # Only run in interactive shells(do not dettach the auto-created main session and create
 # a new one, this will create a zombie session)
 # If any issue with zsh or tmux, dettach the tmux and the problems may appear
-# [[ $- != *i* ]] && return
-# # Don't start tmux inside tmux
-# if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
-#   tmux attach -t main || tmux new -s main
-# fi
+[[ $- != *i* ]] && return
+# Don't start tmux inside tmux
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
+  tmux attach -t main || tmux new -s main
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -43,6 +43,7 @@ alias ll="$flags -l --git --header --time-style=long-iso"
 alias la="$flags -a"
 alias lt="$flags --tree --level=3"
 
+alias cl=clear
 ## Plugins installed by homebrew go here
 source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -67,7 +68,7 @@ autoload -Uz compinit && compinit
 # Use nvim to open man pages(I have not checked the snippet yet)
 # https://neovim.io/doc/user/starting/#_%24vim-and-%24vimruntime
 # See the environment variables set when nvim starts up
-if [ -z $VIM ]; then
+if [[ -z $VIM ]]; then
     export MANPAGER="nvim +Man!"
 fi
 export PATH="/usr/lib/ccache:$PATH"

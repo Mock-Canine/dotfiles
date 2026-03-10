@@ -57,6 +57,7 @@ vim.keymap.set('v', '<Tab>', '>gv', opts)
 --- Keymaps with leader key
 vim.keymap.set('n', '<leader>tw', '<cmd>set wrap!<CR>',vim.tbl_extend('force', opts, {desc = '[T]oggle [W]rap'})) -- Toggle line wrapping
 vim.keymap.set('n', '<leader>q', '<cmd>q!<CR>', opts)
+vim.keymap.set('n', '<leader>w', '<cmd>wq<CR>', opts)
 
 vim.keymap.set('n', '<leader>r', [[:%s/\v]], {
   noremap = true,
@@ -65,6 +66,15 @@ vim.keymap.set('n', '<leader>r', [[:%s/\v]], {
 vim.keymap.set({ 'v', 'x' }, '<leader>r', [[:s/\v]], {
   noremap = true,
   desc = "[R]eplace (very magic) in selection"
+})
+
+vim.keymap.set('n', '<leader>g', [[:g/\v]], {
+  noremap = true,
+  desc = "[G]lobal (very magic)"
+})
+vim.keymap.set({ 'v', 'x' }, '<leader>g', [[:g/\v]], {
+  noremap = true,
+  desc = "[G]lobal (very magic) in selection"
 })
 
 local diagnostics_active = true -- Toggle diagnostics

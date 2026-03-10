@@ -20,13 +20,21 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
+        local map_center = function(keys, func, desc, mode)
+          mode = mode or 'n'
+          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          vim.schedule(function()
+            vim.cmd("normal! zz")
+          end)
+        end
+
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[N]ame')
         map('<leader>ca', vim.lsp.buf.code_action, 'Execute [C]ode [A]ction', { 'n', 'x' })
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        map_center('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map_center('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map_center('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map_center('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map_center('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
         map('<leader>sd', require('telescope.builtin').lsp_document_symbols, 'Open [D]ocument [S]ymbols')
         map('<leader>sw', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open [W]orkspace [S]ymbols')
 
@@ -123,10 +131,12 @@ return {
           clangdFileStatus = true,
           usePlaceholders = true,
           completeUnimported = true,
+          fallbackFlags = { "-std=c23", "-Wall", "-Wextra" },
         },
       },
       lua_ls = {},
       jsonls = {},
+      bashls = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -141,6 +151,7 @@ return {
       'lua-language-server', -- Lua Language server
       'stylua', -- Used to format Lua code
       'json-lsp',
+      'bash-language-server',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
