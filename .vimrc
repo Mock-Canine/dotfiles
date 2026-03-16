@@ -2,72 +2,15 @@ set nocompatible
 
 " Plugins go here
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-bufferline'
 call plug#end()
-
-
-" Configuration for coc
-set encoding=utf-8
-set updatetime=300
-set signcolumn=yes
-" Tab/Shift-Tab navigate the completion menu; otherwise Tab is Tab
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <silent><expr> <S-TAB>
-      \ coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Enter confirms completion; otherwise normal Enter + notify coc
-inoremap <silent><expr> <CR>
-      \ coc#pum#visible() ? coc#pum#confirm()
-      \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
-
-" Trigger completion manually
-if has('nvim')
-  inoremap <silent><expr> <C-Space> coc#refresh()
-else
-  inoremap <silent><expr> <C-@> coc#refresh()
-endif
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gp :call CocAction('jumpDefinition', 'pedit')<CR>
-
-" symbol documentation 
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation() abort
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-" Bind the rename key 
-nmap <leader>rn <Plug>(coc-rename)
-
-" Diagnostics navigation
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Settings for bufferline plugin
 let g:bufferline_show_bufnr = 0
 
-
 syntax on
 " Color settings 
 set notermguicolors
-
-" auto-wipe the previewwindow
-autocmd BufWinEnter * if &previewwindow | setlocal bufhidden=wipe | endif
 
 filetype plugin indent on
 
@@ -88,7 +31,6 @@ set relativenumber
 set laststatus=3
 " set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-set tags=./tags;
 set completeopt=menu
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.

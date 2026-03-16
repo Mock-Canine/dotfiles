@@ -1,3 +1,5 @@
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
 # Only run in interactive shells(do not dettach the auto-created main session and create
 # a new one, this will create a zombie session)
 # If any issue with zsh or tmux, dettach the tmux and the problems may appear
@@ -13,8 +15,6 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 ## Make zsh vim-like
 bindkey -v
@@ -71,6 +71,4 @@ autoload -Uz compinit && compinit
 if [[ -z $VIM ]]; then
     export MANPAGER="nvim +Man!"
 fi
-export PATH="/usr/lib/ccache:$PATH"
-export NEMU_HOME=/home/zhangyong/ysyx/ysyx-workbench/nemu
-export AM_HOME=/home/zhangyong/ysyx/ysyx-workbench/abstract-machine
+# export PATH="/usr/lib/ccache:$PATH"

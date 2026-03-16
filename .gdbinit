@@ -2379,12 +2379,12 @@ set style disassembler immediate foreground yellow
 
 # Start ------------------------------------------------------------------------
 
-python Dashboard.start()
+# python Dashboard.start()
 
 # Fixes ------------------------------------------------------------------------
 
 # workaround for the GDB readline issue, see #325
-python import sys; sys.modules['readline'] = None
+# python import sys; sys.modules['readline'] = None
 
 # File variables ---------------------------------------------------------------
 

@@ -131,7 +131,7 @@ return {
           clangdFileStatus = true,
           usePlaceholders = true,
           completeUnimported = true,
-          fallbackFlags = { "-std=c23", "-Wall", "-Wextra" },
+          fallbackFlags = { "-std=c++23", "-Wall", "-Wextra" },
         },
       },
       lua_ls = {},

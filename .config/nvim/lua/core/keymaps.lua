@@ -58,6 +58,7 @@ vim.keymap.set('v', '<Tab>', '>gv', opts)
 vim.keymap.set('n', '<leader>tw', '<cmd>set wrap!<CR>',vim.tbl_extend('force', opts, {desc = '[T]oggle [W]rap'})) -- Toggle line wrapping
 vim.keymap.set('n', '<leader>q', '<cmd>q!<CR>', opts)
 vim.keymap.set('n', '<leader>w', '<cmd>wq<CR>', opts)
+vim.keymap.set('n', '<leader>k', '<cmd>bd<CR>', opts)
 
 vim.keymap.set('n', '<leader>r', [[:%s/\v]], {
   noremap = true,
