@@ -1,13 +1,15 @@
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
+export PATH="$PATH:/snap/bin"
+
 # Only run in interactive shells(do not dettach the auto-created main session and create
 # a new one, this will create a zombie session)
 # If any issue with zsh or tmux, dettach the tmux and the problems may appear
-[[ $- != *i* ]] && return
-# Don't start tmux inside tmux
-if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
-  tmux attach -t main || tmux new -s main
-fi
+# [[ $- != *i* ]] && return
+# # Don't start tmux inside tmux
+# if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
+#   tmux attach -t main || tmux new -s main
+# fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
