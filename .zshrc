@@ -74,3 +74,12 @@ if [[ -z $VIM ]]; then
     export MANPAGER="nvim +Man!"
 fi
 # export PATH="/usr/lib/ccache:$PATH"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.local/bin:$PATH"
+# Add ssh agent automatively
+eval $(keychain --eval --quiet ~/.ssh/id_ed25519)
